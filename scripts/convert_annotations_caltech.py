@@ -9,7 +9,7 @@ from collections import defaultdict
 
 all_obj = 0
 data = defaultdict(dict)
-for dname in sorted(glob.glob('data/annotations/set*')):
+for dname in sorted(glob.glob('data/caltech/annotations/set*')):
     set_name = os.path.basename(dname)
     data[set_name] = defaultdict(dict)
     for anno_fn in sorted(glob.glob('{}/*.vbb'.format(dname))):
@@ -61,4 +61,4 @@ for dname in sorted(glob.glob('data/annotations/set*')):
         all_obj += n_obj
 
 print('Number of objects:', all_obj)
-json.dump(data, open('data/annotations.json', 'w'))
+json.dump(data, open('data/caltech/annotations.json', 'w'))

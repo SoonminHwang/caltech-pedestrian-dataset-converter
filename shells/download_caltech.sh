@@ -5,7 +5,21 @@ if [ ! -d data ]; then
 fi
 cd data
 
+if [ ! -d caltech ]; then
+    mkdir caltech
+fi
+cd caltech
+
+# Annotations
 wget http://www.vision.caltech.edu/Image_Datasets/CaltechPedestrians/datasets/USA/annotations.zip
+unzip annotations.zip
+
+# Videos
+if [ ! -d videos ]; then
+    mkdir videos
+fi
+cd videos
+
 wget http://www.vision.caltech.edu/Image_Datasets/CaltechPedestrians/datasets/USA/set00.tar
 wget http://www.vision.caltech.edu/Image_Datasets/CaltechPedestrians/datasets/USA/set01.tar
 wget http://www.vision.caltech.edu/Image_Datasets/CaltechPedestrians/datasets/USA/set02.tar
@@ -18,38 +32,15 @@ wget http://www.vision.caltech.edu/Image_Datasets/CaltechPedestrians/datasets/US
 wget http://www.vision.caltech.edu/Image_Datasets/CaltechPedestrians/datasets/USA/set09.tar
 wget http://www.vision.caltech.edu/Image_Datasets/CaltechPedestrians/datasets/USA/set10.tar
 
-unzip annotations.zip
-rm -rf annotations.zip
 
-tar xvf set00.tar
-rm -rf set00.tar
-
-tar xvf set01.tar
-rm -rf set01.tar
-
-tar xvf set02.tar
-rm -rf set02.tar
-
-tar xvf set03.tar
-rm -rf set03.tar
-
-tar xvf set04.tar
-rm -rf set04.tar
-
-tar xvf set05.tar
-rm -rf set05.tar
-
-tar xvf set06.tar
-rm -rf set06.tar
-
-tar xvf set07.tar
-rm -rf set07.tar
-
-tar xvf set08.tar
-rm -rf set08.tar
-
-tar xvf set09.tar
-rm -rf set09.tar
-
-tar xvf set10.tar
-rm -rf set10.tar
+mkdir set00 & tar xvf set00.tar -C set00
+mkdir set01 & tar xvf set01.tar -C set01
+mkdir set02 & tar xvf set02.tar -C set02
+mkdir set03 & tar xvf set03.tar -C set03
+mkdir set04 & tar xvf set04.tar -C set04
+mkdir set05 & tar xvf set05.tar -C set05
+mkdir set06 & tar xvf set06.tar -C set06
+mkdir set07 & tar xvf set07.tar -C set07
+mkdir set08 & tar xvf set08.tar -C set08
+mkdir set09 & tar xvf set09.tar -C set09
+mkdir set10 & tar xvf set10.tar -C set10

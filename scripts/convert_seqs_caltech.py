@@ -5,16 +5,18 @@ import os
 import glob
 import cv2 as cv
 
-
 def save_img(dname, fn, i, frame):
-    cv.imwrite('{}/{}_{}_{}.png'.format(
-        out_dir, os.path.basename(dname),
-        os.path.basename(fn).split('.')[0], i), frame)
+    setName = os.path.basename(dname)
+    vidName = os.path.basename(fn).split('.')[0]
+    imgDir = out_dir + '/' + setName
 
-out_dir = 'data/images'
+    cv.imwrite('{}/{}_{}_{:06d}.png'.format(
+        imgDir, setName, vidName, i), frame)
+
+out_dir = 'data/caltech/images'
 if not os.path.exists(out_dir):
     os.makedirs(out_dir)
-for dname in sorted(glob.glob('data/set*')):
+for dname in sorted(glob.glob('data/caltech/videos/set*')):
     for fn in sorted(glob.glob('{}/*.seq'.format(dname))):
         cap = cv.VideoCapture(fn)
         i = 0
